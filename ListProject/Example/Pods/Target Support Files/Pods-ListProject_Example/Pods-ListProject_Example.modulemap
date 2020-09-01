@@ -1,0 +1,6 @@
+framework module Pods_ListProject_Example {
+  umbrella header "Pods-ListProject_Example-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -1,0 +1,14 @@
+source 'https://github.com/CocoaPods/Specs.git'
+use_frameworks!
+
+target 'ListProject_Example' do
+  pod 'ListProject', :path => '../'
+   pod 'SnapKit', '~> 5.0.0'
+  target 'ListProject_Tests' do
+    inherit! :search_paths
+    pod 'Quick', '~> 1.2.0'
+    pod 'Nimble', '~> 7.0'
+    pod 'FBSnapshotTestCase' , '~> 2.1.4'
+    pod 'Nimble-Snapshots' , '~> 6.3.0'
+  end
+end

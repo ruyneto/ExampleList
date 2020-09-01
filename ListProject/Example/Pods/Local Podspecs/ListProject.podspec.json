@@ -1,0 +1,22 @@
+{
+  "name": "ListProject",
+  "version": "0.1.0",
+  "summary": "A short description of ListProject.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/Ruy Neto/ListProject",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "Ruy Neto": "neto3333@gmail.com"
+  },
+  "source": {
+    "git": "https://github.com/Ruy Neto/ListProject.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "source_files": "ListProject/Classes/**/*"
+}
