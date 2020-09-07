@@ -24,6 +24,7 @@
 		665119ED24FF3214008D9087 /* MovieListDataSource+Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665119EC24FF3214008D9087 /* MovieListDataSource+Delegate.swift */; };
 		665B46EC25058C3F0082C609 /* MovieList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665B46EB25058C3F0082C609 /* MovieList.swift */; };
 		665B46EF2505C3A00082C609 /* MovieListLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665B46EE2505C3A00082C609 /* MovieListLoadingView.swift */; };
+		665B46F12506BB0C0082C609 /* MovieListErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665B46F02506BB0C0082C609 /* MovieListErrorView.swift */; };
 		7FAB61BAAD8575B806DCCD1D /* Pods_ListProject_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09634F1035227C49B1A97CE2 /* Pods_ListProject_Tests.framework */; };
 /* End PBXBuildFile section */
 
@@ -62,6 +63,7 @@
 		665119EC24FF3214008D9087 /* MovieListDataSource+Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MovieListDataSource+Delegate.swift"; sourceTree = "<group>"; };
 		665B46EB25058C3F0082C609 /* MovieList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieList.swift; sourceTree = "<group>"; };
 		665B46EE2505C3A00082C609 /* MovieListLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListLoadingView.swift; sourceTree = "<group>"; };
+		665B46F02506BB0C0082C609 /* MovieListErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListErrorView.swift; sourceTree = "<group>"; };
 		9531539BC791F5615F28DBBB /* Pods-ListProject_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ListProject_Tests.release.xcconfig"; path = "Target Support Files/Pods-ListProject_Tests/Pods-ListProject_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		B6DE0CB97A0FE96D36858499 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		F4EB655480FB542511196D77 /* ListProject.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = ListProject.podspec; path = ../ListProject.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
@@ -216,6 +218,7 @@
 			children = (
 				665119E924FDC9EF008D9087 /* MovieListUIView.swift */,
 				665B46EE2505C3A00082C609 /* MovieListLoadingView.swift */,
+				665B46F02506BB0C0082C609 /* MovieListErrorView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -444,6 +447,7 @@
 				665119E824FDC8DD008D9087 /* MovieListInteractor.swift in Sources */,
 				665B46EC25058C3F0082C609 /* MovieList.swift in Sources */,
 				665119E424FDC8DD008D9087 /* MovieListWorker.swift in Sources */,
+				665B46F12506BB0C0082C609 /* MovieListErrorView.swift in Sources */,
 				665119EA24FDC9EF008D9087 /* MovieListUIView.swift in Sources */,
 				665119E724FDC8DD008D9087 /* MovieListViewController.swift in Sources */,
 				665119E524FDC8DD008D9087 /* MovieListRouter.swift in Sources */,

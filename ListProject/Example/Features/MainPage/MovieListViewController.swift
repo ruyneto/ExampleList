@@ -11,13 +11,19 @@
 //
 
 import UIKit
-
+import RxSwift
+import RxCocoa
 protocol MovieListDisplayLogic: class{
     func displayLoading()
     func displayList(movieList:MovieList.ShowList.ViewModel)
+    func displayError()
 }
 
 class MovieListViewController: UIViewController, MovieListDisplayLogic{
+    
+    func displayError() {
+        self.view = self.movieListErrorView
+    }
     
     func displayLoading(){
         self.view = MovieListLoadingView()
@@ -32,6 +38,11 @@ class MovieListViewController: UIViewController, MovieListDisplayLogic{
     var interactor: MovieListBusinessLogic?
     var router: (NSObjectProtocol & MovieListRoutingLogic & MovieListDataPassing)?
 
+    var movieListErrorView: MovieListErrorView = {
+        let error = MovieListErrorView()
+        return error
+    }()
+    
     var movieListView: MovieListUIView = {
         let view = MovieListUIView()
         return view
@@ -41,6 +52,8 @@ class MovieListViewController: UIViewController, MovieListDisplayLogic{
         let ds = MovieListDSDelegate()
         return ds
     }()
+    
+    var buttonRestartObservable:Disposable?
   // MARK: Object lifecycle
   
   override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?)
@@ -73,6 +86,8 @@ class MovieListViewController: UIViewController, MovieListDisplayLogic{
     interactor.requestMovies()
     movieListView.listView.delegate   = self.dataSourceDelegate
     movieListView.listView.dataSource = self.dataSourceDelegate
+    configureNavigationController()
+    setupButtons()
   }
   
   // MARK: Routing
@@ -87,11 +102,26 @@ class MovieListViewController: UIViewController, MovieListDisplayLogic{
     }
   }
   
+    func configureNavigationController(){
+        self.navigationItem.title = "Lista de Filmes"
+    }
+    
   // MARK: View lifecycle
   
-  override func viewDidLoad()
-  {
+  override func viewDidLoad(){
     super.viewDidLoad()
   }
-  
+
+    func setupButtons(){
+        self.buttonRestartObservable = self.movieListErrorView.buttonRestart.rx.tap.bind{
+            self.tryAgain()
+        }
+    }
+    
+    func tryAgain(){
+        guard let interactor = self.interactor else{return }
+        displayLoading()
+        interactor.requestMovies()
+    }
+    
 }

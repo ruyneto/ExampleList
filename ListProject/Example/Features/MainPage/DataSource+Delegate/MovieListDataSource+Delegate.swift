@@ -21,6 +21,7 @@ class MovieListDSDelegate:NSObject,UITableViewDataSource,UITableViewDelegate{
         cell.textLabel?.text = data[indexPath.row].name
         return cell
     }
+
     
     
 }

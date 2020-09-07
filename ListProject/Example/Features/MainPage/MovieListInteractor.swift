@@ -48,7 +48,8 @@ class MovieListInteractor: MovieListDataStore{
 extension MovieListInteractor:MovieListBusinessLogic{
     func requestMovies() {
         guard let service = self.movieListService else { return }
-        self.movieListDisposable = service.getMovieList().subscribe(
+        guard let mvLisSubscribe = service.getMovieList() else { return }
+        self.movieListDisposable = mvLisSubscribe.subscribe(
             onSuccess: {
                 success in
                 DispatchQueue.main.async {
@@ -57,7 +58,9 @@ extension MovieListInteractor:MovieListBusinessLogic{
             }
             ,onError: {
                 _ in
-                
+                DispatchQueue.main.async {
+                    self.presenter?.presentError()
+                }
             })
     }
     

@@ -15,7 +15,7 @@ import RxSwift
 import ObjectMapper
 
 protocol MovieListService{
-    func getMovieList() -> Single<MovieListResponse>
+    func getMovieList() -> Single<MovieListResponse>?
 }
 
 enum StandardRequestErrors: Error {
@@ -23,12 +23,13 @@ enum StandardRequestErrors: Error {
     case responseError
 }
 class MovieListWorker:MovieListService{
-    
-    func getMovieList() -> Single<MovieListResponse> {
+    func getMovieList() -> Single<MovieListResponse>? {
+        
+        guard let url = URL(string: "https://api.themoviedb.org/3/discover/movie?api_key=d430281e4dac653c899f6fd4d1af26f0") else {return nil}
         return   Single<MovieListResponse>.create{
             single in
-            let url = URL(string: "https://api.themoviedb.org/3/discover/movie?api_key=d430281e4dac653c899f6fd4d1af26f0")
-            let task = URLSession.shared.dataTask(with: url!){
+            
+            let task = URLSession.shared.dataTask(with: url){
                 data,response,error in
                 if error != nil  {
                     single(.error(StandardRequestErrors.responseError))

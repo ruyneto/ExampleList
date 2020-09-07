@@ -15,11 +15,11 @@ import UIKit
 protocol MovieListPresentationLogic
 {
     func presentMoviesList(movieList:MovieList.ShowList.Response)
+    func presentError()
 }
 
 class MovieListPresenter: MovieListPresentationLogic{
-   
-    
+
     weak var viewController: MovieListDisplayLogic?
   
   // MARK: Do something
@@ -31,4 +31,9 @@ class MovieListPresenter: MovieListPresentationLogic{
         }
         viewController?.displayList(movieList: MovieList.ShowList.ViewModel(movieList: list))
     }
+
+    func presentError() {
+        viewController?.displayError()
+    }
+
 }

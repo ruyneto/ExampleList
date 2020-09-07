@@ -52,7 +52,11 @@ extension MovieListUIView:BaseView{
     func initLayout() {
         listView.snp.makeConstraints({
             c in
-            c.size.equalToSuperview()
+//            c.size.equalToSuperview()
+            c.bottom.equalToSuperview()
+            c.left.equalToSuperview()
+            c.right.equalToSuperview()
+            c.top.equalToSuperview()
         })
     }
     
