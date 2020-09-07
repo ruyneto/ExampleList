@@ -1,9 +1,13 @@
-source 'https://github.com/CocoaPods/Specs.git'
 use_frameworks!
+platform :ios, '9.0'
 
 target 'ListProject_Example' do
   pod 'ListProject', :path => '../'
-   pod 'SnapKit', '~> 5.0.0'
+  pod 'RxSwift', '~> 5'
+  pod 'RxCocoa', '~> 5'
+  pod 'SnapKit'
+  pod 'ObjectMapper', '~> 3.5'
+
   target 'ListProject_Tests' do
     inherit! :search_paths
     pod 'Quick', '~> 1.2.0'

@@ -11,21 +11,38 @@ PODS:
   - Nimble-Snapshots/Core (6.3.0):
     - FBSnapshotTestCase (~> 2.0)
     - Nimble (~> 7.0)
+  - ObjectMapper (3.5.3)
   - Quick (1.2.0)
+  - RxCocoa (5.1.1):
+    - RxRelay (~> 5)
+    - RxSwift (~> 5)
+  - RxRelay (5.1.1):
+    - RxSwift (~> 5)
+  - RxSwift (5.1.1)
+  - SnapKit (4.2.0)
 
 DEPENDENCIES:
   - FBSnapshotTestCase (~> 2.1.4)
   - ListProject (from `../`)
   - Nimble (~> 7.0)
   - Nimble-Snapshots (~> 6.3.0)
+  - ObjectMapper (~> 3.5)
   - Quick (~> 1.2.0)
+  - RxCocoa (~> 5)
+  - RxSwift (~> 5)
+  - SnapKit
 
 SPEC REPOS:
   trunk:
     - FBSnapshotTestCase
     - Nimble
     - Nimble-Snapshots
+    - ObjectMapper
     - Quick
+    - RxCocoa
+    - RxRelay
+    - RxSwift
+    - SnapKit
 
 EXTERNAL SOURCES:
   ListProject:
@@ -36,8 +53,13 @@ SPEC CHECKSUMS:
   ListProject: b4cece9ffaa57f89e2847483c7ff65aeb8415d67
   Nimble: 051e3d8912d40138fa5591c78594f95fb172af37
   Nimble-Snapshots: f5459b5b091678dc942d03ec4741cacb58ba4a52
+  ObjectMapper: 97111c97e054a6ee25917662106689f0b4127b37
   Quick: 58d203b1c5e27fff7229c4c1ae445ad7069a7a08
+  RxCocoa: 32065309a38d29b5b0db858819b5bf9ef038b601
+  RxRelay: d77f7d771495f43c556cbc43eebd1bb54d01e8e9
+  RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
+  SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
 
-PODFILE CHECKSUM: da362a25f023cfb71a06b7b29b5710930d1b2d0a
+PODFILE CHECKSUM: f2b9196cd0876784085cf74958602f80fa8d0774
 
 COCOAPODS: 1.9.3

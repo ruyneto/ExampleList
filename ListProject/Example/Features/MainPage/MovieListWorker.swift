@@ -11,10 +11,50 @@
 //
 
 import UIKit
+import RxSwift
+import ObjectMapper
 
-class MovieListWorker
-{
-  func doSomeWork()
-  {
-  }
+protocol MovieListService{
+    func getMovieList() -> Single<MovieListResponse>
+}
+
+enum StandardRequestErrors: Error {
+    case jsonConversionError
+    case responseError
+}
+class MovieListWorker:MovieListService{
+    
+    func getMovieList() -> Single<MovieListResponse> {
+        return   Single<MovieListResponse>.create{
+            single in
+            let url = URL(string: "https://api.themoviedb.org/3/discover/movie?api_key=d430281e4dac653c899f6fd4d1af26f0")
+            let task = URLSession.shared.dataTask(with: url!){
+                data,response,error in
+                if error != nil  {
+                    single(.error(StandardRequestErrors.responseError))
+                }else{
+                    do {
+                        guard data != nil else {
+                            single(.error(StandardRequestErrors.jsonConversionError))
+                            return
+                        }
+                        let json = try JSONDecoder().decode(MovieListResponse.self, from: data!)
+                      
+                        single(.success(json))
+                    } catch  {
+                        print(error)
+                        single(.error(StandardRequestErrors.jsonConversionError))
+                        
+                    }
+                }
+            }
+            task.resume()
+            return Disposables.create{
+                task.suspend()
+            }
+            
+        }
+    }
+    
+  
 }

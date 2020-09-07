@@ -11,10 +11,10 @@
 //
 
 import UIKit
-
+import RxSwift
 protocol MovieListBusinessLogic
 {
-  func doSomething(request: MovieList.Something.Request)
+  func requestMovies()
 }
 
 protocol MovieListDataStore
@@ -22,20 +22,47 @@ protocol MovieListDataStore
   //var name: String { get set }
 }
 
-class MovieListInteractor: MovieListBusinessLogic, MovieListDataStore
-{
-  var presenter: MovieListPresentationLogic?
-  var worker: MovieListWorker?
+class MovieListInteractor: MovieListDataStore{
+
+  var presenter                   :MovieListPresentationLogic?
+  private var movieListService    :MovieListService?
+  private var disposeBag          :DisposeBag?
+  private var movieListDisposable :Disposable?
   //var name: String = ""
   
   // MARK: Do something
   
-  func doSomething(request: MovieList.Something.Request)
-  {
-    worker = MovieListWorker()
-    worker?.doSomeWork()
+    init(
+        movieListWorker:MovieListService? = MovieListWorker(),
+        disposeBag:DisposeBag? = DisposeBag()
+        ){
+        self.movieListService = movieListWorker
+        self.disposeBag       = disposeBag
+    }
     
-    let response = MovieList.Something.Response()
-    presenter?.presentSomething(response: response)
-  }
+    deinit{
+        self.disposeObservables()
+    }
+}
+
+extension MovieListInteractor:MovieListBusinessLogic{
+    func requestMovies() {
+        guard let service = self.movieListService else { return }
+        self.movieListDisposable = service.getMovieList().subscribe(
+            onSuccess: {
+                success in
+                DispatchQueue.main.async {
+                    self.presenter?.presentMoviesList(movieList:MovieList.ShowList.Response(movieList: success.results!))
+                }
+            }
+            ,onError: {
+                _ in
+                
+            })
+    }
+    
+    func disposeObservables(){
+        guard let movieListDisposable = self.movieListDisposable,let dpbag = self.disposeBag else {return}
+        movieListDisposable.disposed(by: dpbag)
+    }
 }

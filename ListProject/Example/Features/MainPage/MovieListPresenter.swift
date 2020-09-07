@@ -14,18 +14,21 @@ import UIKit
 
 protocol MovieListPresentationLogic
 {
-  func presentSomething(response: MovieList.Something.Response)
+    func presentMoviesList(movieList:MovieList.ShowList.Response)
 }
 
-class MovieListPresenter: MovieListPresentationLogic
-{
-  weak var viewController: MovieListDisplayLogic?
+class MovieListPresenter: MovieListPresentationLogic{
+   
+    
+    weak var viewController: MovieListDisplayLogic?
   
   // MARK: Do something
   
-  func presentSomething(response: MovieList.Something.Response)
-  {
-    let viewModel = MovieList.Something.ViewModel()
-    viewController?.displaySomething(viewModel: viewModel)
-  }
+    func presentMoviesList(movieList:MovieList.ShowList.Response){
+        var list:[MovieList.ShowList.ViewModel.MovieVM] = []
+        for movie in movieList.movieList{
+            list.append(MovieList.ShowList.ViewModel.MovieVM(name: movie.title!, description: movie.overview!))
+        }
+        viewController?.displayList(movieList: MovieList.ShowList.ViewModel(movieList: list))
+    }
 }

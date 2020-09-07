@@ -12,16 +12,35 @@
 
 import UIKit
 
-protocol MovieListDisplayLogic: class
-{
-  func displaySomething(viewModel: MovieList.Something.ViewModel)
+protocol MovieListDisplayLogic: class{
+    func displayLoading()
+    func displayList(movieList:MovieList.ShowList.ViewModel)
 }
 
-class MovieListViewController: UIViewController, MovieListDisplayLogic
-{
-  var interactor: MovieListBusinessLogic?
-  var router: (NSObjectProtocol & MovieListRoutingLogic & MovieListDataPassing)?
+class MovieListViewController: UIViewController, MovieListDisplayLogic{
+    
+    func displayLoading(){
+        self.view = MovieListLoadingView()
+    }
+    
+    func displayList(movieList:MovieList.ShowList.ViewModel){
+        self.view = self.movieListView
+        dataSourceDelegate.data =  movieList.movieList
+        self.movieListView.listView.reloadData()
+    }
+    
+    var interactor: MovieListBusinessLogic?
+    var router: (NSObjectProtocol & MovieListRoutingLogic & MovieListDataPassing)?
 
+    var movieListView: MovieListUIView = {
+        let view = MovieListUIView()
+        return view
+    }()
+    
+    var dataSourceDelegate:MovieListDSDelegate = {
+        let ds = MovieListDSDelegate()
+        return ds
+    }()
   // MARK: Object lifecycle
   
   override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?)
@@ -50,6 +69,10 @@ class MovieListViewController: UIViewController, MovieListDisplayLogic
     presenter.viewController = viewController
     router.viewController = viewController
     router.dataStore = interactor
+    displayLoading()
+    interactor.requestMovies()
+    movieListView.listView.delegate   = self.dataSourceDelegate
+    movieListView.listView.dataSource = self.dataSourceDelegate
   }
   
   // MARK: Routing
@@ -69,21 +92,6 @@ class MovieListViewController: UIViewController, MovieListDisplayLogic
   override func viewDidLoad()
   {
     super.viewDidLoad()
-    doSomething()
   }
   
-  // MARK: Do something
-  
-  //@IBOutlet weak var nameTextField: UITextField!
-  
-  func doSomething()
-  {
-    let request = MovieList.Something.Request()
-    interactor?.doSomething(request: request)
-  }
-  
-  func displaySomething(viewModel: MovieList.Something.ViewModel)
-  {
-    //nameTextField.text = viewModel.name
-  }
 }
