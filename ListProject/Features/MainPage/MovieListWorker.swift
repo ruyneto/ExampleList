@@ -11,8 +11,6 @@
 //
 
 import UIKit
-import RxSwift
-import ObjectMapper
 
 protocol MovieListService{
     func getMovieList() -> Single<MovieListResponse>?

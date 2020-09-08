@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import ObjectMapper
+
 
 class MovieListResponse:Codable {
     var page, totalResults, totalPages: Int?

@@ -11,7 +11,7 @@
 //
 
 import UIKit
-import RxSwift
+
 protocol MovieListBusinessLogic
 {
   func requestMovies()

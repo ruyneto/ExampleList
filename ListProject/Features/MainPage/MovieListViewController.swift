@@ -11,8 +11,7 @@
 //
 
 import UIKit
-import RxSwift
-import RxCocoa
+
 protocol MovieListDisplayLogic: class{
     func displayLoading()
     func displayList(movieList:MovieList.ShowList.ViewModel)
