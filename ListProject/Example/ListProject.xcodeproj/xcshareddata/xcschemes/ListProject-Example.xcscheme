@@ -61,6 +61,26 @@
                ReferencedContainer = "container:ListProject.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "665B4747250719030082C609"
+               BuildableName = "MovieListErrorViewTests.xctest"
+               BlueprintName = "MovieListErrorViewTests"
+               ReferencedContainer = "container:ListProject.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "665B4761250726DF0082C609"
+               BuildableName = "ListProject_ExampleTests.xctest"
+               BlueprintName = "ListProject_ExampleTests"
+               ReferencedContainer = "container:ListProject.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction

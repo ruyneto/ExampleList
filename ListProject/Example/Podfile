@@ -5,14 +5,12 @@ target 'ListProject_Example' do
   pod 'ListProject', :path => '../'
   pod 'RxSwift', '~> 5'
   pod 'RxCocoa', '~> 5'
-  pod 'SnapKit'
-  pod 'ObjectMapper', '~> 3.5'
+  pod 'SnapKit', '~> 4.0'
 
-  target 'ListProject_Tests' do
+  target 'ListProject_ExampleTests' do
     inherit! :search_paths
-    pod 'Quick', '~> 1.2.0'
-    pod 'Nimble', '~> 7.0'
-    pod 'FBSnapshotTestCase' , '~> 2.1.4'
-    pod 'Nimble-Snapshots' , '~> 6.3.0'
-  end
+    pod 'RxSwift', '~> 5'
+    pod 'RxCocoa', '~> 5'
+    pod 'SnapKit', '~> 4.0'
+ end
 end
