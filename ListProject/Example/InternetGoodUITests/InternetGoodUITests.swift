@@ -27,6 +27,16 @@ class InternetGoodUITests: XCTestCase {
         // UI tests must launch the application that they test.
         let app = XCUIApplication()
         app.launch()
+        
+        let tablesQuery = XCUIApplication().tables
+        let rogueStaticText = tablesQuery/*@START_MENU_TOKEN@*/.staticTexts["Rogue"]/*[[".cells.staticTexts[\"Rogue\"]",".staticTexts[\"Rogue\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+        rogueStaticText.tap()
+        
+        let hardKillStaticText = tablesQuery/*@START_MENU_TOKEN@*/.staticTexts["Hard Kill"]/*[[".cells.staticTexts[\"Hard Kill\"]",".staticTexts[\"Hard Kill\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+        hardKillStaticText.tap()
+        hardKillStaticText.tap()
+        tablesQuery/*@START_MENU_TOKEN@*/.staticTexts["Project Power"]/*[[".cells.staticTexts[\"Project Power\"]",".staticTexts[\"Project Power\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        rogueStaticText.tap()
 
         // Use recording to get started writing UI tests.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
